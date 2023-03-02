@@ -1,15 +1,13 @@
 package xyz.hrxcy.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@RestController
 public class UserController {
-    private int uId;
-    private String name;
-    private String password;
-    private int phone;
+
+    @PostMapping("/login")
+    public boolean login(){
+        return false;
+    }
 }
