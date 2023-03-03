@@ -64,7 +64,6 @@ public class UserController {
      */
     @GetMapping("/wallet/list/{userId}")
     public List<Details> queryDetailsByUserId(@PathVariable String userId){
-        System.out.println("userId = "  + userId);
         return walletService.getAllWalletChange(userId);
     }
 }
