@@ -5,11 +5,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class GetNowSystemTimeAndUUID {
-    public String getUtilsId(){
+    public static String getUtilsId(){
         return UUID.randomUUID().toString();
     }
 
-    public String getTime(){
+    public static String getTime(){
        String format = "YYYY-MM-dd hh:mm:ss";
        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(format));
     }

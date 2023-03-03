@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.hrxcy.mapper.WalletMapper">
+    
+    <resultMap id="WalletAndDetailsList" type="xyz.hrxcy.pojo.Wallet">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="walletId" column="wallet_id"/>
+        <result property="money" column="money"/>
+        <collection property="details" ofType="xyz.hrxcy.pojo.Details">
+            <id property="dId" column="d_id"/>
+            <result property="walletId" column="wallet_id"/>
+            <result property="changeAmount" column="change_amount"/>
+            <result property="status" column="status"/>
+            <result property="remark" column="remark"/>
+            <result property="balance" column="balance"/>
+            <result property="createTime" column="create_time"/>
+        </collection>
+    </resultMap>
+    
+    <select id="queryAllDetailed" resultMap="WalletAndDetailsList">
+        SELECT * FROM wallet
+                          LEFT JOIN details
+                                    ON wallet.wallet_id = details.wallet_id
+        WHERE wallet.wallet_id = #{id}
+    </select>
+
+
+</mapper>
